@@ -1,0 +1,150 @@
+CLASS is a template of an object whereas
+OBJECT is an instance of a class 
+classes help us defining the datatype
+
+when we create an object of a class we are creating instance of that class 
+isntance = physical stuff of class
+example : when babies are born they are instance of human class 
+
+class = logical construct
+object = physical reality // -> occupies space in memory
+
+functions jo class ke andar define hote hai unhe ham methods kehte hai
+
+classes ke objects ham banate hai main function me 
+
+.this = it is a java keyword 
+printcolor function ko jo bhi object call kr ri hogi uska vo color print krva dega
+aur (.this) is function i.e. printcolor ko batayega ki is function ko kis object ne call kia hai
+moreover hame batata hai us method ko konsi object access krne ki koshish kr ri hai
+
+class Pen{
+    String color;
+    String type;
+public void printColor(){
+    System.out.println(this.color); <------
+}
+}
+public class oopsL1{                             
+    public static void main(String[] args){
+        Pen pen1 = new Pen();
+        pen1.color = "blue"; <-----                 // outout = blue
+        pen1.type = "ball";
+
+        pen1.printColor(); <-------
+    }
+}
+
+----------------------------------------------------------------------------------------------
+
+Student s1 = new Student();
+
+new Student(); = object
+
+new = it is a keyword
+jab bhi hamne new keyword laga dia memory ke andar / memory heap ke andar
+ek jagah allocate ho jayegi -> us jagah ke andar hamri puri object store ho jayegi
+vo jagah hamne object ke hisab se allocate kr di hai 
+
+Student() = we created a constructor
+constructor ka kaam hota hai java ke objects ko construct krna
+
+*   constructor name == class name
+*   constructors do not return anything / no return type
+*   ek object ke lie constructor sirf ek hi baar call ho sakta hai
+
+there are 3 type of constructors mtlb ham 3 tariko se object create kr sakte hai
+1. { Non Parameterized constructors }
+    vo constructors/functions jinke andar parameters nahi hote
+
+    class Student{ <-----------
+        String name;
+        int age;
+
+        public void printInfo(){
+            System.out.println(this.name);
+            System.out.println(this.age);       //output = constructor called
+        }                                       //         saif            
+        Student(){  <----------                 //         20
+            System.out.println("constructor called");
+        }
+    }
+    
+    public class oopsL2 {
+        public static void main(String[] args) {
+            Student s1 = new Student(); <-------
+            s1.name = "saif";
+            s1.age = 20;
+            s1.printInfo(); <----
+        }
+    }
+
+    Student(){
+        System.out.println("constructor called");
+    }
+
+( jab tk hamne Student naam ka constructor nahi banaya tha
+    tab bhi hamara fucntion run hora tha that is because 
+    java khud se constructor bana leti hai par jab hamne apna 
+    banaya to vo call hogaya )
+-------------------------------------------------------------------
+
+2. { Parameterized constructor }
+    (which have parameters)
+
+
+    class Student1{
+        String name;
+        int age;
+    
+        public void printInfo(){
+            System.out.println(this.name);
+            System.out.println(this.age);
+        }
+        Student1(String name , int age){ <------
+            this.name  = name; // name = parameter jo pass hua upar
+            /* this.name = object ka naam */
+            this.age = age;   
+        }
+    }                           //output= saif
+                                //        20
+    public class oopsL3 {
+        public static void main(String[] args) {
+            Student1 s1 = new Student1("saif",20); <----------
+            s1.printInfo();
+        }
+    }
+    
+---------------------------------------------------------------------
+
+3. {Copy constructor }
+    ek object ko copy krke dusre object me daal dena
+
+class Student2{
+    String name;
+    int age;
+
+    public void printInfo(){
+        System.out.println(this.name);
+        System.out.println(this.age);
+    }
+    Student2(Student2 s2){ <-------
+        this.name = s2.name;
+        this.age = s2.age;
+    }
+    Student2(){ <------
+        
+    }               //output = saif nextline= 20
+}
+
+public class oopsL4 {
+    public static void main(String[] args) {
+        Student2 s1 = new Student2();
+        s1.name = "saif";
+        s1.age =20;
+        Student2 s2 = new Student2(s1); <--------
+
+        s2.printInfo();
+    }
+}
+
