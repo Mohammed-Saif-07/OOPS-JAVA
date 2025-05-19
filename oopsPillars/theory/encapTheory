@@ -1,0 +1,98 @@
+Encapsulation 
+
+Encapsulation is the process of combining data and functions into a single unit called class.
+In Encapsulation, the data is not accessed directly; 
+it is accessed through the functions present inside the class. In simpler words, 
+attributes of the class are kept private and public getter and setter methods are
+provided to manipulate these attributes. Thus, encapsulation makes the concept of data hiding possible.
+(Data hiding: a language feature to restrict access to members of an object,
+reducing the negative effect due to dependencies. e.g. "protected", "private" feature in Java). 
+
+
+Package in Java
+Package is a group of similar types of classes, interfaces and sub-packages.
+Packages can be built-in or user defined.
+Built-in packages - java, util, io etc.
+
+import java.util.Scanner;
+
+import java.io.IOException;
+
+Access Modifiers in Java->
+
+Private: The access level of a private modifier is only within the class.
+It cannot be accessed from outside the class.
+
+Default: The access level of a default modifier is only within the package.
+It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+
+Protected: The access level of a protected modifier is within the package and outside
+the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
+
+Public: The access level of a public modifier is everywhere.
+It can be accessed from within the class, outside the class, within the package and outside the package.
+
+package newpackage;
+
+class Account {
+   public String name;
+   protected String email;
+   private String password;
+
+
+   public void setPassword(String password) {
+       this.password = password;
+   }
+}
+public class Sample {
+   public static void main(String args[]) {
+       Account a1 = new Account();
+       a1.name = "chitkara";
+       a1.setPassword("abcd");
+       a1.email = "hello@chitkara.com";
+   }
+}
+
+Getters and Setters:
+
+1. Getters and setters are methods used to retrieve (get) and set the values of private fields (variables) in a class.
+2. They are typically used to enforce encapsulation, a principle of object-oriented programming
+   that hides the internal state of an object and only exposes it through controlled methods.
+3. Getters are methods used to retrieve the values of private fields.
+4. Setters are methods used to modify (set) the values of private fields.
+5. By using getters and setters, you can ensure that access to the fields of a class is controlled and validated, if necessary.
+
+this Keyword:
+1. this is a reference to the current object within a class.
+2. It is used to differentiate between instance variables (fields) and local variables when they have the same name.
+3. When you use this to refer to a member variable (field), you are explicitly referring to the field of the current object.
+4. It's also commonly used to invoke one constructor from another constructor in the same class.
+
+Now, let's relate this to your example:
+
+
+class Account {
+    public String name;  // Public field
+    protected String email;  // Protected field
+    private String password;  // Private field
+
+    // Getter method for password
+    public String getPassword() {
+        return this.password;  // Using "this" to refer to the password field of the current object
+    }
+
+    // Setter method for password
+    public void setPassword(String pass) {
+        this.password = pass;  // Using "this" to refer to the password field of the current object
+    }
+}
+
+public class Bank {
+    public static void main(String[] args) {
+        Account account1 = new Account();
+        account1.name = "saff";
+        account1.email = "saif@gmail.com";  // Since email is protected, it can be accessed within the same package
+        account1.setPassword("absd");  // Setting the password using the setPassword method
+        System.out.println(account1.getPassword());  // Getting the password using the getPassword method
+    }
+}
